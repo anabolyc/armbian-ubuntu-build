@@ -1,4 +1,5 @@
-FROM ubuntu:xenial
+#FROM ubuntu:xenial
+FROM ubuntu:18.04
 
 # reqired packages
 RUN dpkg --add-architecture i386
@@ -19,8 +20,7 @@ ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8' TERM=screen
 
 RUN mkdir /armbian-build
 WORKDIR /armbian-build
-RUN git clone https://github.com/armbian/build
-
 COPY start.sh /armbian-build
+RUN git clone https://github.com/armbian/build
 
 CMD ["/bin/bash", "/armbian-build/start.sh"]
